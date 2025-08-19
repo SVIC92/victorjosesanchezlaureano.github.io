@@ -19,11 +19,17 @@ Este es mi portafolio personal desarrollado con **HTML, CSS y JavaScript**, dond
 ## 📂 Estructura del proyecto
 portafolio/
 │── index.html
+
 │── certificacion.html
+
 │── style.css
+
 │── style_certificacion.css
+
 │── script.js
+
 │── /certificaciones
+
 │── /images
 
 ## 🚀 Cómo visualizarlo localmente
@@ -33,6 +39,7 @@ portafolio/
 2. Abrir index.html en el navegador.
 
 💼 Autor: Victor Jose Sánchez Laureano
+
 📧 Contacto: victorjosesanchezlaureano@gmail.com
 
 🔗 GitHub: https://github.com/SVIC92
