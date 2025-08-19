@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio - Victor José Sánchez Laureano</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hero">
+    <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+    <nav class="nav-menu-container">
+        <ul class="nav-menu">
+            <li><a href="#perfil">Perfil</a></li>
+            <li><a href="#habilidades">Habilidades</a></li>
+            <li><a href="#certificaciones">Certificaciones</a></li>
+            <li><a href="#educacion">Educación</a></li>
+            <li><a href="#proyectos">Proyectos</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- NUEVA sección de presentación (imagen + perfil) -->
+<section id="perfil" class="intro">
+  <div class="intro-grid">
+    <div class="intro-left">
+      <img src="images/Img_perfil.png" alt="Foto de Victor José Sánchez Laureano" class="avatar">
+      <h1>Victor José Sánchez Laureano</h1>
+      <p>Estudiante de Ingeniería de Sistemas Computacionales (Tercio Superior)</p>
+    </div>
+    <div class="intro-right">
+      <h2>Perfil Profesional</h2>
+      <p>Soy un estudiante de Ingeniería de Sistemas Computacionales en la Universidad Privada del Norte (tercio superior), con interés en desarrollo de software, análisis de datos y gestión de bases de datos. Puntual, proactivo, cooperativo y de rápido aprendizaje.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+    <h2 id="proyectos">Proyectos Institucionales</h2>
+    <div class="proyectos-grid">
+        <div class="proyecto-card">
+            <h3>Dashboard de ventas en Power BI</h3>
+            <p>Análisis de datos de ventas con KPIs y visualizaciones dinámicas.</p>
+        </div>
+        <div class="proyecto-card">
+            <h3>Aplicación Movil en Android Studio</h3>
+            <p>Proyecto académico centrado en la gestión de usuarios, monitoreo de pedidos y administración de inventarios, logrando una optimización del 20% en los procesos logísticos durante una simulación educativa.</p>
+        </div>
+        <div class="proyecto-card">
+            <h3>Base de datos en SQL Server Management</h3>
+            <p>Modelo relacional para planilla de colaboradores de una empresa, con normalización y consultas optimizadas.</p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2 id="habilidades">Habilidades</h2>
+
+    <!-- Filtros por categoría -->
+    <div class="skill-filters" role="tablist" aria-label="Filtros de habilidades">
+        <button class="chip is-active" data-filter="all" role="tab" aria-selected="true">Todas</button>
+        <button class="chip" data-filter="lenguajes" role="tab" aria-selected="false">Lenguajes</button>
+        <button class="chip" data-filter="datos" role="tab" aria-selected="false">Datos</button>
+        <!-- Si luego agregas herramientas, ya queda el chip -->
+        <button class="chip" data-filter="herramientas" role="tab" aria-selected="false">Herramientas</button>
+    </div>
+
+    <div class="skills-grid">
+        <div class="skill" data-category="lenguajes">
+            <div class="skill-header">
+                <div class="skill-name">
+                    <span class="skill-icon">
+                      <img src="images/tech/python.png" alt="Python">
+                    </span>
+                    <span>Python</span>
+                </div>
+                <span class="level-badge lvl-intermedio">Intermedio</span>
+            </div>
+            <div class="skill-bar" style="--level: 55%;" aria-label="Nivel 55%"><span></span></div>
+        </div>
+
+        <div class="skill" data-category="lenguajes">
+            <div class="skill-header">
+                <div class="skill-name">
+                    <span class="skill-icon">
+                        <img src="images/tech/javascript.png" alt="JavaScript">
+                    </span>
+                    <span>JavaScript</span>
+                </div>
+                <span class="level-badge lvl-intermedio">Intermedio</span>
+            </div>
+            <div class="skill-bar" style="--level: 70%;" aria-label="Nivel 70%"><span></span></div>
+        </div>
+
+        <div class="skill" data-category="datos">
+            <div class="skill-header">
+                <div class="skill-name">
+                    <span class="skill-icon">
+                        <img src="images/tech/sql.png" alt="SQL Server">
+                    </span>
+                    <span>SQL Server</span>
+                </div>
+                <span class="level-badge lvl-intermedio">Intermedio</span>
+            </div>
+            <div class="skill-bar" style="--level: 75%;" aria-label="Nivel 75%"><span></span></div>
+        </div>
+
+        <div class="skill" data-category="datos">
+            <div class="skill-header">
+                <div class="skill-name">
+                    <span class="skill-icon">
+                        <img src="images/tech/powerbi.png" alt="Power BI">
+                    </span>
+                    <span>Power BI</span>
+                </div>
+                <span class="level-badge lvl-intermedio">Intermedio</span>
+            </div>
+            <div class="skill-bar" style="--level: 70%;" aria-label="Nivel 70%"><span></span></div>
+        </div>
+
+        <div class="skill" data-category="lenguajes">
+            <div class="skill-header">
+                <div class="skill-name">
+                    <span class="skill-icon">
+                        <img src="images/tech/cpp.png" alt="C#/C++">
+                    </span>
+                    <span>C#/C++</span>
+                </div>
+                <span class="level-badge lvl-basico">Básico</span>
+            </div>
+            <div class="skill-bar" style="--level: 45%;" aria-label="Nivel 45%"><span></span></div>
+        </div>
+
+        <div class="skill" data-category="datos">
+            <div class="skill-header">
+                <div class="skill-name">
+                    <span class="skill-icon">
+                        <img src="images/tech/mongodb.png" alt="MongoDB">
+                    </span>
+                    <span>MongoDB</span>
+                </div>
+                <span class="level-badge lvl-basico">Básico</span>
+            </div>
+            <div class="skill-bar" style="--level: 40%;" aria-label="Nivel 40%"><span></span></div>
+        </div>
+
+        <div class="skill" data-category="lenguajes">
+            <div class="skill-header">
+                <div class="skill-name">
+                    <span class="skill-icon">
+                        <img src="images/tech/java.png" alt="Java">
+                    </span>
+                    <span>Java</span>
+                </div>
+                <span class="level-badge lvl-intermedio">Intermedio</span>
+            </div>
+            <div class="skill-bar" style="--level: 70%;" aria-label="Nivel 70%"><span></span></div>
+        </div>
+        <div class="skill" data-category="herramientas">
+            <div class="skill-header">
+                <div class="skill-name">
+                    <span class="skill-icon">
+                        <img src="images/tech/excel.png" alt="Excel">
+                    </span>
+                    <span>Excel</span>
+                </div>
+                <span class="level-badge lvl-avanzado">Avanzado</span>
+            </div>
+            <div class="skill-bar" style="--level: 70%;" aria-label="Nivel 70%"><span></span></div>
+        </div>
+    </div>
+</section>
+
+<section>
+  <h2>Certificaciones</h2>
+
+  <div class="cert-carousel">
+    <button class="cert-arrow prev" aria-label="Anterior">‹</button>
+
+    <div class="cert-viewport">
+      <div class="cert-track">
+        <a href="certificacion.html?id=1" class="cert-card">
+          <img src="certificaciones/mini_cert_POWERBI.png" alt="Curso de Power BI">
+          <h3>Curso de Power BI - Skill</h3>
+        </a>
+        <a href="certificacion.html?id=2" class="cert-card">
+          <img src="certificaciones/mini_cert_ExcelAvanzado.png" alt="Curso de Excel Avanzado">
+          <h3>Curso de Excel Avanzado</h3>
+        </a>
+        <a href="certificacion.html?id=3" class="cert-card">
+          <img src="certificaciones/mini_cert_IntroduccionIA.png" alt="Curso de Introducción a la IA">
+          <h3>Curso de Introducción a la IA</h3>
+        </a>
+        <a href="certificacion.html?id=4" class="cert-card">
+          <img src="certificaciones/mini_cert_CienciaDatos.png" alt="Curso de Ciencia de Datos">
+          <h3>Curso de Ciencia de Datos</h3>
+        </a>
+        <a href="certificacion.html?id=5" class="cert-card">
+          <img src="certificaciones/mini_cert_JS.png" alt="Curso de JavaScript">
+          <h3>Curso de JavaScript</h3>
+        </a>
+        <a href="certificacion.html?id=6" class="cert-card">
+          <img src="certificaciones/mini_cert_HTMLCSS.png" alt="Curso de HTML y CSS">
+          <h3>Curso de HTML y CSS</h3>
+        </a>
+      </div>
+    </div>
+
+    <button class="cert-arrow next" aria-label="Siguiente">›</button>
+  </div>
+</section>
+
+<section>
+    <h2 id="educacion">Educación</h2>
+    <ul class="edu-list">
+        <li class="edu-item" data-ico="🎓">Universidad Privada del Norte – Ingeniería de Sistemas Computacionales (2022 - Presente) | Actualmente cursando el 8vo ciclo</li>
+        <li class="edu-item" data-ico="📘">CEPRE-UNI (2021)</li>
+        <li class="edu-item" data-ico="🏫">I.E. 6041 Alfonso Ugarte (2010 - 2020)</li>
+    </ul>
+</section>
+
+<section>
+    <h2 id="contacto">Contacto</h2>
+    <div class="contacto-grid">
+        <a href="mailto:victorjosesanchezlaureano@gmail.com" target="_blank" aria-label="Correo">
+            <img src="images/email-icon.png" alt="Correo" class="contacto-icon">
+        </a>
+        <a href="https://www.linkedin.com/in/sánchez-laureano-victor-josé-a79baa261" target="_blank" aria-label="LinkedIn">
+            <img src="images/linkedin-icon.png" alt="LinkedIn" class="contacto-icon">
+        </a>
+        <a href="https://github.com/SVIC92" target="_blank" aria-label="GitHub">
+            <img src="images/github-icon.png" alt="GitHub" class="contacto-icon">
+        </a>
+    </div>
+</section>
+
+<footer>
+    <p>© 2025 Victor José Sánchez Laureano</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

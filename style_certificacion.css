@@ -1,0 +1,113 @@
+.cert-viewer {
+            text-align: center;
+            padding: 2rem;
+        }
+        img {
+            max-width: 90%;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        /* Layout: visor PDF + panel de descripción */
+        .cert-viewer {
+            padding: 2rem;
+        }
+
+        .cert-layout {
+            display: flex;
+            gap: 1.5rem;
+            align-items: stretch;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .viewer-pane {
+            flex: 1 1 65%;
+        }
+
+        .sidebar-pane {
+            flex: 1 1 35%;
+            max-width: 420px;
+        }
+
+        .cert-viewer iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 6px;
+            background: #fff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .desc-card {
+          /* capa oscura + degradado del tema para mejor contraste */
+          background:
+            linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.25)),
+            linear-gradient(135deg, var(--primary), var(--accent));
+          color: #ffffff;
+          border: 1px solid rgba(255,255,255,0.18);
+          border-radius: 12px;
+          padding: 1rem 1.25rem;
+          box-shadow: 0 6px 18px rgba(0,0,0,.25);
+          text-align: left;
+        }
+
+        .desc-card h3 { margin: 0 0 .5rem; color: #fff; }
+
+        .desc-intro { margin: 0 0 .75rem; color: #f8fafc; }
+
+        /* Lista dentro del panel: cajas semitransparentes legibles */
+        .desc-card .desc-list {
+          list-style: none;
+          margin: .5rem 0 0;
+          padding-left: 0;
+        }
+        .desc-card .desc-list li {
+          position: relative;
+          padding: .6rem .75rem .6rem 1.25rem;
+          margin: .4rem 0;
+          color: #f9fbff;
+          background: rgba(255,255,255,0.08);      /* combina con el degradado */
+          border: 1px solid rgba(255,255,255,0.16);
+          border-radius: 10px;
+        }
+        .desc-card .desc-list li::before {
+          content: "•";
+          position: absolute;
+          left: .5rem;
+          top: .35rem;
+          color: #e0e7ff;                          /* acento legible */
+          font-weight: 800;
+          font-size: 1rem;
+        }
+
+        /* Palabras clave */
+        .desc-card strong { color: #e0e7ff; font-weight: 700; }
+
+        /* Navegación */
+        .nav-buttons {
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .nav-buttons a {
+            margin: 0 10px;
+            padding: 0.5rem 1rem;
+            background: #1f3c88;
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .cert-layout {
+                flex-direction: column;
+            }
+            .sidebar-pane {
+                max-width: none;
+            }
+            .cert-viewer iframe {
+                height: 500px;
+            }
+        }
