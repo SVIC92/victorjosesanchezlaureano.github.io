@@ -18,6 +18,7 @@ Este es mi portafolio personal desarrollado con **HTML, CSS y JavaScript**, dond
 
 ## 📂 Estructura del proyecto
 portafolio/
+
 │── index.html
 
 │── certificacion.html
