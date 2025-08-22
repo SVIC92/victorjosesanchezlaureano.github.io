@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Proyecto | Victor José Sánchez Laureano</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style_proyectos.css" />
+</head>
+<body>
+  <header class="hero">
+    <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+    <nav class="nav-menu-container">
+      <ul class="nav-menu">
+        <li><a href="index.html#perfil">Perfil</a></li>
+        <li><a href="index.html#habilidades">Habilidades</a></li>
+        <li><a href="proyectos.html">Proyectos</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="project-viewer">
+    <div class="project-header">
+      <h2 id="p-title"></h2>
+      <p id="p-summary" class="muted"></p>
+    </div>
+
+    <div class="project-layout">
+      <div class="project-left">
+        <div class="project-cover">
+          <img src="" alt="">
+        </div>
+        <div class="project-gallery"></div>
+      </div>
+      <aside class="project-right">
+        <div class="desc-card">
+          <h3>Descripción</h3>
+          <p id="p-desc"></p>
+          <h4>Características</h4>
+          <ul class="project-features"></ul>
+          <h4>Tecnologías</h4>
+          <div class="project-tags"></div>
+          <div class="project-links" style="margin-top:.6rem;"></div>
+        </div>
+
+        <div class="project-nav">
+          <a class="btn-link proj-prev" href="#">‹ Anterior</a>
+          <a class="btn-link proj-next" href="#">Siguiente ›</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Victor José Sánchez Laureano</p>
+  </footer>
+
+  <script src="projects-data.js"></script>
+  <script src="proyecto.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

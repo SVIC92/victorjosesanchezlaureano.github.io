@@ -1,144 +1,55 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certificación</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="style_certificacion.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certificación</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style_certificacion.css">
 </head>
 <body>
+
+<header class="hero">
+  <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+  <nav class="nav-menu-container">
+    <ul class="nav-menu">
+      <li><a href="index.html#perfil">Perfil</a></li>
+      <li><a href="index.html#habilidades">Habilidades</a></li>
+      <li><a href="proyectos.html">Proyectos</a></li>
+      <li><a href="index.html#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+</header>
+
 <div class="cert-viewer">
-    <h2 id="cert-title"></h2>
+  <h2 id="cert-title"></h2>
 
-    <div class="cert-layout">
-        <div class="viewer-pane">
-            <iframe id="cert-pdf"></iframe>
-        </div>
-
-        <aside class="sidebar-pane">
-            <div class="desc-card">
-                <h3>Descripción de la certificacion</h3>
-                <p id="cert-resumen" class="desc-intro"></p>
-                <div id="cert-desc"></div>
-            </div>
-        </aside>
+  <div class="cert-layout">
+    <div class="viewer-pane">
+      <iframe id="cert-pdf"></iframe>
     </div>
 
-    <div class="nav-buttons">
-        <a id="prev-cert" href="#">Anterior</a>
-        <a id="next-cert" href="#">Siguiente</a>
-        <a href="index.html">Volver</a>
-    </div>
+    <aside class="sidebar-pane">
+      <div class="desc-card">
+        <h3>Descripción de la certificacion</h3>
+        <p id="cert-resumen" class="desc-intro"></p>
+        <div id="cert-desc"></div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="nav-buttons">
+    <a id="prev-cert" href="#">Anterior</a>
+    <a id="next-cert" href="#">Siguiente</a>
+    <a href="index.html">Volver</a>
+  </div>
 </div>
 
-<script>
-    const certificaciones = [
-        {
-            titulo: "Curso de Power BI - Skill",
-            pdf: "certificaciones/certificado_POWERBI.pdf",
-            resumen: "Curso práctico enfocado en el manejo de datos con Power BI, uso de DAX y publicación de reportes interactivos en Power BI Service y Mobile.",
-            descripcion: [
-                "1.Modelado de datos avanzado.",
-                "2.Transformación de datos con Power Query.",
-                "3.Lenguaje DAX Intermedio.",
-                "4.Visualizaciones y análisis interactivo avanzado."
-            ]
-        },
-        {
-            titulo: "Curso de Excel Avanzado",
-            pdf: "certificaciones/certificado_ExcelAvanzado.pdf",
-            resumen: "Curso avanzado de Excel, incluyendo funciones complejas, tablas dinámicas y automatización con VBA.",
-            descripcion: [
-                "Tablas dinámicas y gráficos avanzados.",
-                "Funciones complejas y anidadas.",
-                "Automatización de tareas con VBA.",
-                "Integración con otras herramientas de Microsoft 365."
-            ]
-        },
-        {
-            titulo: "Curso de Introducción a la IA - Cisco",
-            pdf: "certificaciones/certificado_IntroduccionIA.pdf",
-            resumen: "Introducción a los conceptos fundamentales de la inteligencia artificial y sus aplicaciones prácticas.",
-            descripcion: [
-                "Conceptos básicos de IA",
-                "Algoritmos de aprendizaje automático",
-                "Redes neuronales y aprendizaje profundo",
-                "Aplicaciones prácticas de IA"
-            ]
-        },
-        {
-            titulo: "Curso de Ciencia de Datos - Cisco",
-            pdf: "certificaciones/certificado_CienciaDatos.pdf",
-            resumen: "Fundamentos de la ciencia de datos, incluyendo análisis estadístico, visualización y técnicas de machine learning.",
-            descripcion: [
-                "Análisis exploratorio de datos",
-                "Visualización de datos con herramientas como Matplotlib y Seaborn",
-                "Técnicas de machine learning supervisado y no supervisado",
-                "Uso de bibliotecas como Pandas y Scikit-learn"
-            ]
-        },
-        {
-            titulo: "Curso de JavaScript - Fundación Telefonica",
-            pdf: "certificaciones/certificado_JS.pdf",
-            resumen: "Curso completo de JavaScript, desde lo básico hasta conceptos avanzados.",
-            descripcion: [
-                "Sintaxis y operadores",
-                "Estructuras de control",
-                "Funciones y objetos",
-                "Programación asíncrona"
-            ]
-        },
-        {
-            titulo: "Curso de HTML y CSS - Fundación Telefonica",
-            pdf: "certificaciones/certificado_HTML5_CSS.pdf",
-            resumen: "Curso completo de HTML y CSS, desde lo básico hasta conceptos avanzados.",
-            descripcion: [
-                "Estructura de documentos HTML",
-                "Estilos CSS y diseño responsivo",
-                "Frameworks CSS como Bootstrap",
-                "Accesibilidad y buenas prácticas"
-            ]
-        }
-    ];
+<footer>
+  <p>© 2025 Victor José Sánchez Laureano</p>
+</footer>
 
-    const params = new URLSearchParams(window.location.search);
-    let id = parseInt(params.get("id"), 10);
-    if (isNaN(id) || id < 1 || id > certificaciones.length) id = 1;
-
-    function mostrarCertificacion() {
-        const cert = certificaciones[id - 1];
-        document.getElementById("cert-title").textContent = cert.titulo;
-        document.getElementById("cert-pdf").src = cert.pdf;
-
-        const resumenEl = document.getElementById("cert-resumen");
-        resumenEl.textContent = cert.resumen || "";
-
-        const descEl = document.getElementById("cert-desc");
-        descEl.innerHTML = "";
-
-        if (Array.isArray(cert.descripcion) && cert.descripcion.length) {
-            const ul = document.createElement("ul");
-            ul.className = "desc-list";
-            cert.descripcion.forEach(item => {
-                const li = document.createElement("li");
-                li.textContent = item;
-                ul.appendChild(li);
-            });
-            descEl.appendChild(ul);
-        } else if (typeof cert.descripcion === "string" && cert.descripcion.trim()) {
-            const p = document.createElement("p");
-            p.textContent = cert.descripcion;
-            descEl.appendChild(p);
-        }
-
-        document.getElementById("prev-cert").href =
-            `certificacion.html?id=${(id - 1) < 1 ? certificaciones.length : id - 1}`;
-        document.getElementById("next-cert").href =
-            `certificacion.html?id=${(id + 1) > certificaciones.length ? 1 : id + 1}`;
-    }
-
-    mostrarCertificacion();
-</script>
+<script src="certificacion.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

@@ -482,3 +482,14 @@ section:has(> h2#contacto) .contacto-icon{
 @media (max-width: 480px){
   .proyecto-card .proyecto-media{ height: 140px; }
 }
+
+/* Footer centrado en todas las páginas */
+footer{
+  width: 100%;
+  margin-top: 2rem;
+  padding: 1.25rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
