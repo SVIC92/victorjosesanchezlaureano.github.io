@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const id = parseInt(qs.get('id'),10);
   const arr = window.PROJECTS || [];
   const p = arr.find(x => x.id === id) || arr[0];
-
   if (!p){ location.href = 'proyectos.html'; return; }
 
   const $ = (s) => document.querySelector(s);
@@ -15,8 +14,22 @@ document.addEventListener('DOMContentLoaded', () => {
   if (cover) { cover.src = p.cover || ''; cover.alt = p.title; }
 
   const gal = document.querySelector('.project-gallery');
-  if (gal && Array.isArray(p.gallery) && p.gallery.length) {
-    const per = 4;
+
+  function getPer(){
+    if (window.matchMedia('(max-width:480px)').matches) return 1;
+    if (window.matchMedia('(max-width:768px)').matches) return 2;
+    if (window.matchMedia('(max-width:1024px)').matches) return 3;
+    return 4;
+  }
+
+  function buildGallery(){
+    if (!(gal && Array.isArray(p.gallery) && p.gallery.length)) {
+      if (gal) gal.remove();
+      return;
+    }
+    const per = getPer();
+    gal.style.setProperty('--per', per);
+
     const pages = [];
     for (let i = 0; i < p.gallery.length; i += per) {
       pages.push(p.gallery.slice(i, i + per));
@@ -74,17 +87,21 @@ document.addEventListener('DOMContentLoaded', () => {
         setActiveBySrc(src);
       });
     });
-
     setActiveBySrc(cover?.src || p.cover);
-  } else if (gal) {
-    gal.remove();
   }
 
-  $('#p-desc').textContent = p.description || '';
+  buildGallery();
+  window.addEventListener('resize', (() => {
+    let last = getPer();
+    return () => {
+      const current = getPer();
+      if (current !== last) { last = current; buildGallery(); }
+    };
+  })());
 
+  $('#p-desc').textContent = p.description || '';
   const feats = document.querySelector('.project-features');
   if (feats) feats.innerHTML = (p.features||[]).map(f=>`<li>${f}</li>`).join('');
-
   const tech = document.querySelector('.project-tags');
   if (tech) tech.innerHTML = (p.tech||[]).map(t=>`<span class="tag">${t}</span>`).join('');
 

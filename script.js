@@ -2,13 +2,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.querySelector(".menu-toggle");
   const navMenuContainer = document.querySelector(".nav-menu-container");
 
-  // Menú lateral (móvil)
   if (menuToggle && navMenuContainer) {
     menuToggle.addEventListener("click", () => {
       navMenuContainer.classList.toggle("open");
     });
 
-    // Cerrar el menú lateral al tocar un link en móvil
     navMenuContainer.addEventListener("click", (e) => {
       const link = e.target.closest("a");
       if (link && window.matchMedia("(max-width: 991.98px)").matches) {
@@ -17,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Filtro de habilidades por categoría
   const chips = document.querySelectorAll(".skill-filters .chip");
   const cards = document.querySelectorAll(".skills-grid .skill");
 
@@ -52,7 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
     applyFilter("all");
   }
 
-  // Ocultar/mostrar barra superior y estado "scrolled"
   let lastY = window.pageYOffset || 0;
   function handleScroll() {
     if (!navMenuContainer) return;
@@ -66,14 +62,13 @@ document.addEventListener("DOMContentLoaded", () => {
       navMenuContainer.classList.remove("hide");
       lastY = y; return;
     }
-    if (y > lastY && y > 100) navMenuContainer.classList.add("hide"); // bajando
-    else navMenuContainer.classList.remove("hide");                   // subiendo
+    if (y > lastY && y > 100) navMenuContainer.classList.add("hide"); 
+    else navMenuContainer.classList.remove("hide");                   
     lastY = y;
   }
   window.addEventListener("scroll", handleScroll, { passive: true });
   handleScroll();
 
-  // Carrusel de certificaciones (avanza por “página” visible)
   document.querySelectorAll(".cert-carousel").forEach((carousel) => {
     const viewport = carousel.querySelector(".cert-viewport");
     const prevBtn = carousel.querySelector(".cert-arrow.prev");
@@ -85,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
       nextBtn.classList.toggle("is-disabled", viewport.scrollLeft >= max);
     };
 
-    const page = () => viewport.clientWidth; // 3 en desktop, 2/1 en responsive
+    const page = () => viewport.clientWidth;
     prevBtn.addEventListener("click", () => viewport.scrollBy({ left: -page(), behavior: "smooth" }));
     nextBtn.addEventListener("click", () => viewport.scrollBy({ left:  page(), behavior: "smooth" }));
 

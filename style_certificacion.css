@@ -7,7 +7,6 @@
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
-        /* Layout: visor PDF + panel de descripción */
         .cert-viewer {
             padding: 2rem;
         }
@@ -40,7 +39,6 @@
         }
 
         .desc-card {
-          /* capa oscura + degradado del tema para mejor contraste */
           background:
             linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.25)),
             linear-gradient(135deg, var(--primary), var(--accent));
@@ -55,8 +53,6 @@
         .desc-card h3 { margin: 0 0 .5rem; color: #fff; }
 
         .desc-intro { margin: 0 0 .75rem; color: #f8fafc; }
-
-        /* Lista dentro del panel: cajas semitransparentes legibles */
         .desc-card .desc-list {
           list-style: none;
           margin: .5rem 0 0;
@@ -67,7 +63,7 @@
           padding: .6rem .75rem .6rem 1.25rem;
           margin: .4rem 0;
           color: #f9fbff;
-          background: rgba(255,255,255,0.08);      /* combina con el degradado */
+          background: rgba(255,255,255,0.08);    
           border: 1px solid rgba(255,255,255,0.16);
           border-radius: 10px;
         }
@@ -76,15 +72,12 @@
           position: absolute;
           left: .5rem;
           top: .35rem;
-          color: #e0e7ff;                          /* acento legible */
+          color: #e0e7ff;                      
           font-weight: 800;
           font-size: 1rem;
         }
-
-        /* Palabras clave */
         .desc-card strong { color: #e0e7ff; font-weight: 700; }
 
-        /* Navegación */
         .nav-buttons {
             margin-top: 1rem;
             text-align: center;
@@ -99,7 +92,6 @@
             text-decoration: none;
         }
 
-        /* Responsive */
         @media (max-width: 900px) {
             .cert-layout {
                 flex-direction: column;
