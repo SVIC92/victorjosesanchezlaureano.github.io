@@ -1,6 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
   const certificaciones = [
     {
+      titulo: "Curso de Fundamentos de Linux - Cisco Netacad",
+      pdf: "certificaciones/Linux_Essentials_certificate.pdf",
+      resumen: "Curso introductorio sobre los fundamentos del sistema operativo Linux, incluyendo comandos básicos, gestión de archivos y permisos.",
+      descripcion: [
+        "1. Introducción a Linux y su historia.",
+        "2. Instalación y configuración del sistema.",
+        "3. Comandos básicos de la terminal.",
+        "4. Gestión de archivos y permisos.",
+        "5. Administración de usuarios y grupos.",
+        "6. Introducción a scripts de shell."
+      ]
+    },
+    {
       titulo: "Curso de Power BI - Skill",
       pdf: "certificaciones/certificado_POWERBI.pdf",
       resumen: "Curso práctico enfocado en el manejo de datos con Power BI, uso de DAX y publicación de reportes interactivos en Power BI Service y Mobile.",

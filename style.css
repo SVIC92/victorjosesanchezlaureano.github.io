@@ -361,36 +361,50 @@ section:has(> h2#contacto) .btn-primary:active { transform: translateY(0); opaci
 
 section:has(> h2#contacto) .contacto-grid{
   display:flex;
-  gap:.6rem;
-  justify-content:center;
-  align-items:center;
-  flex-wrap:wrap;
-  margin-top:.75rem;
+  flex-direction:column;
+  gap:.75rem;
+  align-items:flex-start;
+  margin-top:1rem;
 }
-section:has(> h2#contacto) .contacto-grid a{
-  display:inline-flex;
+section:has(> h2#contacto) .contacto-item{
+  display:flex;
   align-items:center;
-  justify-content:center;
-  width:48px;               
-  height:48px;
+  gap:.75rem;
+  padding:.75rem 1rem;
   border-radius:12px;
   background:rgba(255,255,255,.08);
   border:1px solid rgba(255,255,255,.16);
   transition:transform .15s ease, box-shadow .2s ease, background .2s ease;
+  width:100%;
+  max-width:420px;
 }
-section:has(> h2#contacto) .contacto-grid a:hover{
+section:has(> h2#contacto) .contacto-item:hover{
   background:rgba(255,255,255,.14);
   transform:translateY(-1px);
   box-shadow:0 8px 20px rgba(0,0,0,.25);
 }
 section:has(> h2#contacto) .contacto-icon{
-  width:28px;               
-  height:28px;
+  width:34px;
+  height:34px;
   object-fit:contain;
 }
+section:has(> h2#contacto) .contacto-info{
+  display:flex;
+  flex-direction:column;
+  gap:.15rem;
+  color:#e9efff;
+}
+section:has(> h2#contacto) .contacto-titulo{
+  font-weight:600;
+  font-size:.95rem;
+}
+section:has(> h2#contacto) .contacto-descripcion{
+  font-size:.85rem;
+  color:#cbd5f5;
+}
 @media (max-width: 480px){
-  section:has(> h2#contacto) .contacto-grid a{ width:44px; height:44px; border-radius:10px; }
-  section:has(> h2#contacto) .contacto-icon{ width:24px; height:24px; }
+  section:has(> h2#contacto) .contacto-item{ width:100%; padding:.65rem .85rem; }
+  section:has(> h2#contacto) .contacto-icon{ width:30px; height:30px; }
 }
 
 .proyectos-grid{
