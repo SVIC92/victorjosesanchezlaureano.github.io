@@ -1,6 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
   const certificaciones = [
     {
+      titulo: "Curso de Fundamentos de Linux - RedHat Academy",
+      pdf: "certificaciones/CERTIFICADO_REDHAT.pdf",
+      resumen: "Curso introductorio sobre los fundamentos del sistema operativo Red Hat Enterprise Linux, incluyendo comandos básicos RHEL, gestión de archivos y permisos.",
+      descripcion: [
+        "1. Introducción a Red Hat Enterprise Linux y su diferencia con otras distribuciones.",
+        "2. Usuarios y grupos, Permisos.",
+        "3. DNF (paquetes), Servicios (Apache, DNS, MySQL y PHP).",
+        "4. Journalctl (logs), Red con nmcli, FirewallD.",
+        "5. SELinux, LVM, Sistemas de archivos.",
+        "6. SSH, Backup, Monitoreo (top, ps)"
+      ]
+    },
+    {
       titulo: "Curso de Fundamentos de Linux - Cisco Netacad",
       pdf: "certificaciones/Linux_Essentials_certificate.pdf",
       resumen: "Curso introductorio sobre los fundamentos del sistema operativo Linux, incluyendo comandos básicos, gestión de archivos y permisos.",
@@ -11,6 +24,19 @@ document.addEventListener('DOMContentLoaded', () => {
         "4. Gestión de archivos y permisos.",
         "5. Administración de usuarios y grupos.",
         "6. Introducción a scripts de shell."
+      ]
+    },
+    {
+      titulo: "Curso CCNA Introducción a Redes - Cisco Netacad",
+      pdf: "certificaciones/certificado_CCNA.pdf",
+      resumen: "Curso introductorio sobre los fundamentos de redes, incluyendo conceptos básicos, protocolos y configuración de dispositivos.",
+      descripcion: [
+        "1. Introducción a las Redes IPv4.",
+        "2. Configuración de dispositivos de red.",
+        "3. Routers y switches.",
+        "4. Hosts y dispositivos finales.",
+        "5. Servidores",
+        "6. Simulación en Packet Tracer."
       ]
     },
     {
