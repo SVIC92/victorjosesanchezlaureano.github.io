@@ -1,0 +1,20 @@
+---
+const links = [
+  { href: "/#perfil", label: "Perfil" },
+  { href: "/#experiencia", label: "Experiencia" },
+  { href: "/#habilidades", label: "Habilidades" },
+  { href: "/#certificaciones", label: "Certificaciones" },
+  { href: "/proyectos", label: "Proyectos" },
+  { href: "/#contacto", label: "Contacto" }
+];
+---
+<header class="hero">
+  <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+  <nav class="nav-menu-container">
+    <ul class="nav-menu">
+      {links.map((l) => (
+        <li><a href={l.href}>{l.label}</a></li>
+      ))}
+    </ul>
+  </nav>
+</header>

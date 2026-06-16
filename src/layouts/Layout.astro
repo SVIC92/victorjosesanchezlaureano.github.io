@@ -1,0 +1,64 @@
+---
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+
+const {
+  title = "Portafolio - Victor José Sánchez Laureano",
+  description = "Portafolio de Victor José Sánchez Laureano, estudiante de Ingeniería de Sistemas Computacionales: proyectos, habilidades y certificaciones."
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <title>{title}</title>
+  <slot name="head" />
+</head>
+<body>
+  <Nav />
+  <slot />
+  <Footer />
+
+  <script>
+    // Comportamiento de la navegación (menú móvil + ocultar al hacer scroll)
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navMenuContainer = document.querySelector(".nav-menu-container");
+
+    if (menuToggle && navMenuContainer) {
+      menuToggle.addEventListener("click", () => {
+        navMenuContainer.classList.toggle("open");
+      });
+      navMenuContainer.addEventListener("click", (e) => {
+        const link = (e.target as HTMLElement).closest("a");
+        if (link && window.matchMedia("(max-width: 991.98px)").matches) {
+          navMenuContainer.classList.remove("open");
+        }
+      });
+    }
+
+    let lastY = window.pageYOffset || 0;
+    function handleScroll() {
+      if (!navMenuContainer) return;
+      const y = window.pageYOffset || 0;
+      const isDesktop = window.matchMedia("(min-width: 992px)").matches;
+
+      if (y > 2) navMenuContainer.classList.add("scrolled");
+      else navMenuContainer.classList.remove("scrolled");
+
+      if (!isDesktop) {
+        navMenuContainer.classList.remove("hide");
+        lastY = y;
+        return;
+      }
+      if (y > lastY && y > 100) navMenuContainer.classList.add("hide");
+      else navMenuContainer.classList.remove("hide");
+      lastY = y;
+    }
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+  </script>
+</body>
+</html>

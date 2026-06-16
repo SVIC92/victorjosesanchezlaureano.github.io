@@ -1,0 +1,32 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { loadProjects } from "../lib/content";
+import "../styles/proyectos.css";
+
+export const prerender = false;
+
+const projects = await loadProjects();
+---
+<Layout title="Proyectos | Victor José Sánchez Laureano">
+  <section>
+    <h2>Proyectos</h2>
+    <div class="proyectos-grid">
+      {projects.map((p) => (
+        <a class="proyecto-card" href={`/proyecto/${p.id}`}>
+          {p.cover && (
+            <div class="proyecto-media">
+              <img src={p.cover} alt={p.title} />
+            </div>
+          )}
+          <div class="proyecto-body">
+            <h3>{p.title}</h3>
+            <p>{p.summary}</p>
+            <div class="proyecto-tags">
+              {(p.tech || []).slice(0, 9).map((t) => <span class="tag">{t}</span>)}
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</Layout>
