@@ -1,5 +1,6 @@
 ---
 import '../../styles/admin.css';
+import UploadField from '../../components/UploadField.astro';
 import {
   getProfile, getExperiences, getSkills, getCertifications, getProjects,
   type Profile, type Experience, type Skill, type Certification, type Project,
@@ -73,7 +74,7 @@ const p = profile;
           <label>Rol / título<input name="role" value={p?.role ?? ''} /></label>
         </div>
         <label>Resumen profesional<textarea name="summary">{p?.summary ?? ''}</textarea></label>
-        <label>URL del avatar<input name="avatar_url" value={p?.avatar_url ?? ''} /></label>
+        <UploadField label="Avatar (imagen)" name="avatar_url" value={p?.avatar_url ?? ''} accept="image/*" placeholder="https://res.cloudinary.com/…" />
         <div class="row">
           <label>Correo<input name="email" value={p?.email ?? ''} /></label>
           <label>URL LinkedIn<input name="linkedin_url" value={p?.linkedin_url ?? ''} /></label>
@@ -148,7 +149,7 @@ const p = profile;
             <input type="hidden" name="id" value={s.id} />
             <div class="row">
               <label>Nombre<input name="name" value={s.name} /></label>
-              <label>URL del icono<input name="icon" value={s.icon} /></label>
+              <UploadField label="Icono (imagen)" name="icon" value={s.icon} accept="image/*" />
             </div>
             <div class="row">
               <label>Categoría
@@ -185,7 +186,7 @@ const p = profile;
           <input type="hidden" name="_action" value="create" />
           <div class="row">
             <label>Nombre<input name="name" /></label>
-            <label>URL del icono<input name="icon" placeholder="/images/tech/ejemplo.png" /></label>
+            <UploadField label="Icono (imagen)" name="icon" accept="image/*" />
           </div>
           <div class="row">
             <label>Categoría
@@ -225,8 +226,8 @@ const p = profile;
             <input type="hidden" name="id" value={c.id} />
             <label>Título<input name="titulo" value={c.titulo} /></label>
             <div class="row">
-              <label>URL miniatura<input name="mini" value={c.mini} /></label>
-              <label>URL PDF<input name="pdf" value={c.pdf} /></label>
+              <UploadField label="Miniatura (imagen)" name="mini" value={c.mini} accept="image/*" />
+              <UploadField label="Certificado (PDF)" name="pdf" value={c.pdf} accept=".pdf,application/pdf" />
             </div>
             <label>Resumen<textarea name="resumen">{c.resumen}</textarea></label>
             <label>Descripción (una por línea)<textarea name="descripcion">{nl(c.descripcion)}</textarea></label>
@@ -245,8 +246,8 @@ const p = profile;
           <input type="hidden" name="_action" value="create" />
           <label>Título<input name="titulo" /></label>
           <div class="row">
-            <label>URL miniatura<input name="mini" placeholder="/certificaciones/mini_cert_X.png" /></label>
-            <label>URL PDF<input name="pdf" placeholder="/certificaciones/certificado_X.pdf" /></label>
+            <UploadField label="Miniatura (imagen)" name="mini" accept="image/*" />
+            <UploadField label="Certificado (PDF)" name="pdf" accept=".pdf,application/pdf" />
           </div>
           <label>Resumen<textarea name="resumen"></textarea></label>
           <label>Descripción (una por línea)<textarea name="descripcion"></textarea></label>
@@ -268,8 +269,8 @@ const p = profile;
             <input type="hidden" name="id" value={pr.id} />
             <label>Título<input name="title" value={pr.title} /></label>
             <label>Resumen<input name="summary" value={pr.summary} /></label>
-            <label>URL portada<input name="cover" value={pr.cover} /></label>
-            <label>Galería (una URL por línea)<textarea name="gallery">{nl(pr.gallery)}</textarea></label>
+            <UploadField label="Portada (imagen)" name="cover" value={pr.cover} accept="image/*" />
+            <UploadField label="Galería (una URL por línea; sube para añadir)" name="gallery" value={nl(pr.gallery)} accept="image/*" textarea append />
             <label>Descripción<textarea name="description">{pr.description}</textarea></label>
             <label>Características (una por línea)<textarea name="features">{nl(pr.features)}</textarea></label>
             <label>Tecnologías (una por línea)<textarea name="tech">{nl(pr.tech)}</textarea></label>
@@ -292,8 +293,8 @@ const p = profile;
           <input type="hidden" name="_action" value="create" />
           <label>Título<input name="title" /></label>
           <label>Resumen<input name="summary" /></label>
-          <label>URL portada<input name="cover" placeholder="/images/proyectos/ejemplo.png" /></label>
-          <label>Galería (una URL por línea)<textarea name="gallery"></textarea></label>
+          <UploadField label="Portada (imagen)" name="cover" accept="image/*" />
+          <UploadField label="Galería (una URL por línea; sube para añadir)" name="gallery" accept="image/*" textarea append />
           <label>Descripción<textarea name="description"></textarea></label>
           <label>Características (una por línea)<textarea name="features"></textarea></label>
           <label>Tecnologías (una por línea)<textarea name="tech"></textarea></label>
@@ -307,5 +308,55 @@ const p = profile;
       </details>
     </section>
   </div>
+
+  <script>
+    // Subida directa y firmada a Cloudinary desde el panel.
+    document.querySelectorAll<HTMLInputElement>('.upload-input').forEach((input) => {
+      input.addEventListener('change', async () => {
+        const file = input.files?.[0];
+        if (!file) return;
+        const form = input.closest('form');
+        const targetName = input.dataset.target || '';
+        const target = form?.querySelector<HTMLInputElement | HTMLTextAreaElement>(`[name="${targetName}"]`);
+        const status = input.parentElement?.querySelector('.upload-status') as HTMLElement | null;
+        if (!target) return;
+
+        const setStatus = (msg: string, cls = '') => {
+          if (status) { status.textContent = msg; status.className = 'upload-status ' + cls; }
+        };
+
+        setStatus('Subiendo…');
+        try {
+          const sign = await fetch('/api/admin/sign-upload').then((r) => r.json());
+          if (sign.error) throw new Error(sign.error);
+
+          const fd = new FormData();
+          fd.append('file', file);
+          fd.append('api_key', sign.apiKey);
+          fd.append('timestamp', String(sign.timestamp));
+          fd.append('folder', sign.folder);
+          fd.append('signature', sign.signature);
+
+          const res = await fetch(`https://api.cloudinary.com/v1_1/${sign.cloudName}/auto/upload`, {
+            method: 'POST',
+            body: fd,
+          });
+          const data = await res.json();
+          if (!data.secure_url) throw new Error(data.error?.message || 'No se pudo subir el archivo.');
+
+          if (input.dataset.append === 'true') {
+            const cur = target.value.trim();
+            target.value = (cur ? cur + '\n' : '') + data.secure_url;
+          } else {
+            target.value = data.secure_url;
+          }
+          setStatus('✔ Subido', 'ok');
+          input.value = '';
+        } catch (e) {
+          setStatus('✖ ' + (e instanceof Error ? e.message : 'Error'), 'err');
+        }
+      });
+    });
+  </script>
 </body>
 </html>

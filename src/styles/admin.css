@@ -80,3 +80,17 @@ textarea{ min-height:80px; resize:vertical; }
   background:rgba(220,38,38,.12); border:1px solid rgba(220,38,38,.4); color:#fecaca;
 }
 .alert code{ color:#fff; }
+
+/* Campo con subida a Cloudinary */
+.upload-field{ display:grid; gap:.35rem; }
+.upload-row{ display:flex; align-items:center; gap:.6rem; flex-wrap:wrap; }
+.upload-input{ font-size:.8rem; max-width:100%; }
+.upload-input::file-selector-button{
+  font:inherit; font-size:.8rem; font-weight:600; cursor:pointer;
+  color:#fff; background:rgba(255,255,255,.08);
+  border:1px solid var(--border); border-radius:8px; padding:.35rem .7rem; margin-right:.6rem;
+}
+.upload-input::file-selector-button:hover{ border-color:var(--accent); }
+.upload-status{ font-size:.8rem; color:var(--muted); }
+.upload-status.ok{ color:#86efac; }
+.upload-status.err{ color:#fecaca; }

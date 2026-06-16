@@ -1,0 +1,33 @@
+---
+// Campo de texto (URL) con botón de subida a Cloudinary.
+// El input de archivo NO tiene 'name', así que no se envía con el formulario;
+// solo rellena el campo de texto con la URL devuelta por Cloudinary.
+interface Props {
+  label: string;
+  name: string;
+  value?: string;
+  placeholder?: string;
+  accept?: string;   // p.ej. "image/*" o ".pdf"
+  append?: boolean;  // true = añadir una línea (para galerías en textarea)
+  textarea?: boolean;
+}
+const { label, name, value = '', placeholder = '', accept = 'image/*', append = false, textarea = false } = Astro.props;
+---
+<div class="upload-field">
+  <label>
+    {label}
+    {textarea
+      ? <textarea name={name} placeholder={placeholder}>{value}</textarea>
+      : <input name={name} value={value} placeholder={placeholder} />}
+  </label>
+  <div class="upload-row">
+    <input
+      type="file"
+      class="upload-input"
+      accept={accept}
+      data-target={name}
+      data-append={append ? 'true' : 'false'}
+    />
+    <span class="upload-status" aria-live="polite"></span>
+  </div>
+</div>
